@@ -1,0 +1,15 @@
+// ObjectWindows - (C) Copyright 1992 by Borland International
+
+#include "windows.h"
+#include "owlrc.h"
+
+#include "Filelib.h"
+
+MFileApp ICON R.ico
+PaintIcon ICON Love.ico
+
+COMMANDS MENU
+BEGIN
+  MENUITEM "&Test", CM_TEST
+END
+
