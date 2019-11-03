@@ -1,0 +1,117 @@
+
+
+{ Рабочий Проект :RGZ (Сетевая задача 'Задача о пути')
+  Группа: 5ПМ-1  Преподаватель : Зверева Т.В.(кафедра ПМиИ)
+  Авторы проекта Студенты: Cвириденко О.В., Родионова Е.А. }
+{ Программа предназначена для нахождения минимального или максимального пути.
+ На вход программы поступает матрица длин (размером N)
+           |l(v[i],v[j]),если v[i]->v[j],
+    r[i,j]=|0,v[i]<>v[j].
+ }
+
+{Текст программы. TurboPascal v. 7.0.--------------------------------------}
+
+Program WayMinMax(input,output);
+Uses
+    Crt,Dos;
+
+const  {Настройка исходных параметров}
+n=14;  {число узлов(вершин)}
+FlagMinMax=1;{1-Min,2-Max}
+nameR='netlen.prn'; {Формирование матрицы r[i,j] из файла}
+nameOut='netmin.prn'; {Выходной файл рассчитанных данных x[i,j]}
+FlagInteger=2;{Number signs before points}
+FlagReal=0;{Number signs after points}
+
+Var
+  R:array[1..n,1..n] of real;  {весовая матрица }
+  X:array[1..n,1..(n+1)] of real;  {матрица потока}
+  i,j,k,p,l,fl:integer;VarMinMax:real;
+  rf:text; {Указатель на файл}
+
+begin {Основной блок}
+
+ClrScr; Writeln('Рабочий Проект :RGZ (Сетевая задача:Задача о пути)');
+Writeln(' Press any key for run.');
+repeat until KeyPressed;Writeln('Идет расчет..');
+
+ {$I-} Assign(rf,nameR);Reset(rf);{$I+} {Формирование r[i,j] из файла}
+if(IOResult<>0) then
+begin ClrScr; Writeln('Cannot find or read datafile=',nameR); exit; end;
+ if(FlagMinMax=1) then VarMinMax:=MaxInt else VarMinMax:=-MaxInt;
+ for i:=1 to n do
+  for j:=1 to n do begin Read(rf,R[i,j]); if (R[i,j]=0) then R[i,j]:=VarMinMax; end;
+ Close(rf); i:=IOResult;
+
+{$I-} Assign(rf,nameOut);Rewrite(rf);{$I+}
+if(IOResult<>0) then
+begin ClrScr;Writeln('Cannot creat out file=',nameOut); exit; end;i:=IOResult;
+
+for i:=1 to n do for j:=1 to (n+1) do X[i,j]:=0; {Обнуление}
+X[1,1]:=0;for k:=2 to n do  X[k,1]:=VarMinMax; {Начальный }
+
+ {Нахождение оптимального пути}
+ for k:=1 to n do
+  for i:=1 to n do
+   case(FlagMinMax)of
+    1:begin
+      p:=1;
+      for j:=2 to n do if((X[j,k]+R[j,i])<(X[p,k]+R[p,i])) then  p:=j;
+      X[i,k+1]:=X[p,k]+R[p,i];
+      if (i=1) then if(0<X[i,k+1])then X[i,k+1]:=0;
+      end;
+    2:begin
+      p:=1;
+      for j:=2 to n do if((X[j,k]+R[j,i])>(X[p,k]+R[p,i])) then  p:=j;
+      X[i,k+1]:=X[p,k]+R[p,i];
+      if (i=1) then if(0>X[i,k+1])then X[i,k+1]:=0;
+      end;
+    end;
+
+{Нахождение вершин оптимального пути и их вывод}
+if (X[n,n+1]=X[n,n]) then
+ begin
+ k:=n;while (X[n,k+1]=X[n,k]) do k:=k-1;k:=k+1;Write('Way_:',k);Readkey;
+ Writeln(rf,' ');Write(rf,'Way=|',n);
+ i:=n;
+ while (i<>0) do
+  begin
+   fl:=0;
+   case (FlagMinMax) of
+    1:begin
+       p:=1;
+       for j:=2 to n do if ((X[j,k-1]+R[j,i])<(X[p,k-1]+R[p,i])) then
+        begin  p:=j;fl:=1; end;
+       end;
+    2:begin
+       p:=1;
+       for j:=2 to n do if ((X[j,k-1]+R[j,i])>(X[p,k-1]+R[p,i])) then
+        begin  p:=j;fl:=1; end;
+       end;
+     end;
+   if (fl<>0) then Write(rf,'<-',p);
+   if i=p then i:=i-1 else i:=p;
+   end;
+ Write(rf,'<-1|.');
+ end;
+
+{ Вывод результатов }
+ for i:=1 to n do
+  begin Writeln(rf,' ');
+   for j:=1 to (n+1) do
+   begin
+    if (X[i,j]=VarMinMax) then X[i,j]:=0;
+    Write(rf,'  ',X[i,j]:FlagInteger:FlagReal);
+    end;
+  end;
+
+ Close(rf);
+ GotoXY(10,12);Writeln(' File created .Press 2-any key for exit.');
+ ReadKey; repeat until KeyPressed;ClrScr;
+
+end.
+
+{Группа: 5ПМ-1  Преподаватель : Зверева Т.В.(кафедра ПМиИ)
+ Авторы проекта Студенты: Cвириденко О.В., Родионова Е.А.
+ Год 2000}
+

@@ -1,0 +1,45 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: minmaxVc6 - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\Evgene\LOCALS~1\Temp\RSP103.tmp" with contents
+[
+/nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Release/minmaxVc6.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\Programs\Projects\Net_DELPHI\minmaxVc6\minmaxVc6.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Evgene\LOCALS~1\Temp\RSP103.tmp" 
+Creating temporary file "C:\DOCUME~1\Evgene\LOCALS~1\Temp\RSP104.tmp" with contents
+[
+/nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Release/minmaxVc6.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\Programs\Projects\Net_DELPHI\minmaxVc6\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Evgene\LOCALS~1\Temp\RSP104.tmp" 
+Creating temporary file "C:\DOCUME~1\Evgene\LOCALS~1\Temp\RSP105.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"Release/minmaxVc6.pdb" /machine:I386 /out:"Release/minmaxVc6.exe" 
+.\Release\minmaxVc6.obj
+.\Release\StdAfx.obj
+]
+Creating command line "link.exe @C:\DOCUME~1\Evgene\LOCALS~1\Temp\RSP105.tmp"
+<h3>Output Window</h3>
+Compiling...
+StdAfx.cpp
+Compiling...
+minmaxVc6.cpp
+D:\Programs\Projects\Net_DELPHI\minmaxVc6\minmaxVc6.cpp(31) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+D:\Programs\Projects\Net_DELPHI\minmaxVc6\minmaxVc6.cpp(49) : warning C4305: '=' : truncation from 'const double' to 'float'
+D:\Programs\Projects\Net_DELPHI\minmaxVc6\minmaxVc6.cpp(49) : warning C4305: '=' : truncation from 'const double' to 'float'
+D:\Programs\Projects\Net_DELPHI\minmaxVc6\minmaxVc6.cpp(123) : warning C4101: 'loop' : unreferenced local variable
+Linking...
+
+
+
+<h3>Results</h3>
+minmaxVc6.exe - 0 error(s), 4 warning(s)
+</pre>
+</body>
+</html>

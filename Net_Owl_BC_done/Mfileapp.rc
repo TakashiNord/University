@@ -1,0 +1,136 @@
+
+// ObjectWindows - (C) Copyright 2000 by International
+
+#include <windows.h>
+#include <owlrc.h>
+
+MFileApp ICON PRELOAD  R.ico
+PaintIcon ICON PRELOAD "Love.ico"
+
+R_bmp BITMAP Earth.bmp
+RFoto BITMAP "Lena.bmp"
+
+#include "Mfileapp.h"       /*File header*/
+
+#include "About13.dlg"
+
+#include "Mfappdl.dlg"   /*Open and save As dialog box*/
+#include "Mfappind.dlg"  /*input dialog box*/
+#include "Mfappstd.dlg"  /*Searching and replace windows*/
+#include "Mfappedm.rc"   /*Menu Edit Windows*/
+#include "Mfappeac.rc"   /*Edit accelerators*/
+#include "Mfappacc.rc"   /*File accelerators*/
+#include "Sysinfo.rc"   /*Menu SysInfo Windows*/
+
+
+Commands MENU LOADONCALL MOVEABLE PURE DISCARDABLE
+BEGIN
+  POPUP "&File"
+    BEGIN
+      MENUITEM "&New",  CM_MDIFILENEW,
+      MENUITEM "&Open",  CM_MDIFILEOPEN,
+      MENUITEM "&Save",  CM_FILESAVE,
+      MENUITEM "Save &As...",  CM_FILESAVEAS,
+      MENUITEM SEPARATOR
+      MENUITEM "E&xit",  CM_EXIT,
+    END
+  POPUP "&Edit"
+    BEGIN
+      MENUITEM "&Undo\aAlt+BkSp", CM_EDITUNDO,//GRAYED
+      MENUITEM SEPARATOR
+      MENUITEM "&Cut\aShift+Del", CM_EDITCUT,
+      MENUITEM "C&opy\aCtrl+Ins",  CM_EDITCOPY,
+      MENUITEM "&Paste\aShift+Ins", CM_EDITPASTE,
+      MENUITEM "&Delete\aDel", CM_EDITDELETE,
+      MENUITEM "C&lear All\aCtrl+Del", CM_EDITCLEAR,
+    END
+  POPUP "&Search"
+    BEGIN
+      MENUITEM   "&Find...", CM_EDITFIND,
+      MENUITEM   "&Replace...", CM_EDITREPLACE,
+      MENUITEM   "&Next\aF3", CM_EDITFINDNEXT,
+    END
+  POPUP "&Run"
+  BEGIN
+    MenuItem  "&Stream", CM_RUN1 ,
+    MenuItem  SEPARATOR
+    MenuItem  "&Net", CM_RUN2 ,   
+    MenuItem  SEPARATOR
+    POPUP "Way"
+    BEGIN
+    MenuItem  "&Create Table", CM_RUN3 ,
+    MenuItem  SEPARATOR
+    MenuItem  "Min", CM_RUN4 ,
+    MenuItem  "Max", CM_RUN5 ,
+    END
+    MenuItem  SEPARATOR
+    MenuItem  "&Gauss",  CM_RUN6,
+   END
+  POPUP "&Window"
+    BEGIN
+      MENUITEM "&Tile", CM_TILECHILDREN,
+      MENUITEM "&Cascade", CM_CASCADECHILDREN,
+      MENUITEM "Arrange &Icons", CM_ARRANGEICONS,
+      MENUITEM "C&lose All", CM_CLOSECHILDREN,
+      MENUITEM SEPARATOR
+      MENUITEM "&Save state", CM_SAVESTATE
+      MENUITEM "&Restore state", CM_RESTORESTATE
+    END
+  POPUP "\a&Help"
+  BEGIN
+    MenuItem  "&Index\aShift+F1", CM_U_HELPINDEX
+    MenuItem  "&Using help", CM_U_HELPHELP ,
+    MenuItem  SEPARATOR
+    MenuItem  "&About..", CM_ABOUT
+  END
+END
+
+
+ ID_DIALOGNumber DIALOG DISCARDABLE LOADONCALL PURE MOVEABLE 10, 35, 120, 100
+ STYLE WS_POPUP | WS_CLIPSIBLINGS | WS_CAPTION | WS_SYSMENU | DS_MODALFRAME
+ CAPTION "Input Number"
+ BEGIN
+   CONTROL " n=" 111, "STATIC", WS_CHILD | WS_VISIBLE | SS_RIGHT, 1, 10, 25, 8
+   CONTROL "0" ID_NAMEEDIT, "EDIT", WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 26,10, 75, 12
+   CTEXT "Введите параметр n " ,456,  10, 25, 80, 50
+   CONTROL "&OK" IDOK, "BUTTON", WS_CHILD | WS_VISIBLE | WS_TABSTOP | BS_DEFPUSHBUTTON, 15, 80, 40, 14
+   CONTROL "&Cancel" IDCANCEL, "BUTTON", WS_CHILD | WS_VISIBLE | WS_TABSTOP, 68, 80,40, 14
+ END
+
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,2950,2000
+ PRODUCTVERSION 1,0,2000
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "CompanyName", "RSG Corporation\nРодионова Елена Александровна (Москва,РОССИЯ) \njCH77 (681000,КнААПО)\0"
+            VALUE "FileDescription", "NET Project Application\0"
+            VALUE "FileVersion", "1.0.2950.2000\0"
+            VALUE "InternalName", "NET(Сеть)\0"
+            VALUE "LegalCopyright", "Copyright (C) 2000,Родионова Е. А.\0"
+            VALUE "LegalTrademarks", "R/R\0"
+            VALUE "OriginalFilename", "Mnetapp.EXE\0"
+            VALUE "ProductName", "NET Application\0"
+            VALUE "ProductVersion", "1.0.2000\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END

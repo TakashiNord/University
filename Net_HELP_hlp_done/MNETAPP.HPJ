@@ -1,0 +1,72 @@
+
+;Options used to define the Help title bar and icon
+[OPTIONS]
+TITLE=Help System NET
+COMPRESS=1;0;1
+CONTENTS=ID_Topic_NET
+WARNING=3  
+ICON= R.ico
+REPORT=ON
+ERRORLOG=mfileapp.BUG
+COPYRIGHT =Copyright 2000, NET v1.0 , Author:Rodionova Elena 
+CITATION =  Rodionova E.A.
+;OPTCDROM = YES 
+;LANGUAGE =  scandanavian 
+
+;Files used to build Cardfile Help
+[FILES]
+test2.rtf
+test3.rtf
+test4.rtf
+test5.rtf
+keys.rtf   ; key's topics
+prnet.rtf   ;programs  topics
+prminmax.rtf ;programs  topics
+prstream.rtf ;programs  topics
+Linenet.rtf
+Stream.rtf
+Methods.rtf
+Mfileapp.rtf  ; main topics
+
+[BITMAPS]
+bullet.bmp
+continue.bmp
+done.bmp
+r.bmp
+choc.bmp
+choc_pr.bmp
+sign.bmp
+sign2.bmp
+Computer.bmp
+ivrit.bmp
+about.bmp
+winapp.bmp
+open.bmp
+next.bmp
+Syseq.bmp
+A.bmp
+B.bmp
+Table.bmp
+Sum.bmp
+p0.bmp
+p1.bmp
+p2.bmp
+p3.bmp
+p4.bmp
+Formula.bmp
+G1.bmp
+G2.bmp
+G1paint.bmp
+
+;Button macros and Using Help file
+[CONFIG]
+;CreateButton("btn_up", "&Up", "JumpContents(`HOME.HLP')")
+BrowseButtons()
+SetHelpOnFile("Mfileapp.HLP")
+
+;Secondary-window characteristics
+[WINDOWS]
+picture = "HELP PROGRAM NET", (123,123,256,256), 0, (0,255,255), (255,0,0)
+
+[MAP]
+#include  <Mfhelp.h>

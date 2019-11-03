@@ -1,0 +1,20 @@
+:Base mnetapp.hlp>Ref
+:Title Visual Help System NET
+1 Содержание=ID_Topic_NET@mnetapp.hlp>Ref
+
+1 Организационные вопросы 
+2 Управление Программой=ID_Topic01@mnetapp.hlp>Ref
+2 Команды  меню=ID_Topic02@mnetapp.hlp>Ref
+2 Разобраться с проблемами=ID_Topic04@mnetapp.hlp>Ref
+2 Авторы и Права=ID_Topic05@mnetapp.hlp>Ref
+2 Приложение (Основные обязанности)=ID_Topic06@mnetapp.hlp>Ref
+
+1 Методы
+2 Максимальный Поток(Stream)=ID_Topic_Stream@mnetapp.hlp>Ref
+2 Линейная Сетевая Задача(Net)=ID_Topic_LineNetBase@mnetapp.hlp>Ref
+2 Создание шаблона таблицы(Create Table)=ID_Topic_CreateTable@mnetapp.hlp>Ref
+2 Решение задачи о минимальном пути(Min)=ID_Topic_MminMax@mnetapp.hlp>Ref
+2 Решение задачи о максимальном пути(Max)=ID_Topic_MminMax@mnetapp.hlp>Ref
+2 Решение системы линейных уравнений Методом Гаусса(Gauss)=ID_Topic_Gauss@mnetapp.hlp>Ref
+
+   
